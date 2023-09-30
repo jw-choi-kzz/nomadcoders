@@ -13,6 +13,14 @@ const 상수(기본적으로 사용할 것)
 변수 명 camelCase으로
 
 #2.3 const and let
-let 변수
+let 변수(가끔 필요시에 사용)
 코드는 위에서 아래로 실행
+var 과거에 사용했던 것.
+
+#2.4 Booleans 
+boolean = ture, false
+null = nothing 변수를 선언했고 값은 아무것도 없는 상태로 정의함(의도적으로 생성. 자연적으로 발생하는 값이 아님)
+undifined 변수를 선언해서 메모리 안에는 존재하지만, 값이 정의되지 않음
+
+#2.5 Arrays
 
