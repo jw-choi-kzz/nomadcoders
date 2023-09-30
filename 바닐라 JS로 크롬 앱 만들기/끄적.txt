@@ -1,0 +1,4 @@
+#2.0 Your First JS Project
+브라우저는 HTML을 열고, HTML은 CSS와 JavaScript를 가져온다.
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <script src='app.js'></script>
