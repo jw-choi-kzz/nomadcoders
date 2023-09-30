@@ -5,4 +5,14 @@
 
 #2.1 Basic Data Types
 number : integer, float
-string : "text"
+string : "text" 'text'
+
+#2.2 Variables
+console.log(); //console에 log, print하는 성격
+const 상수(기본적으로 사용할 것)
+변수 명 camelCase으로
+
+#2.3 const and let
+let 변수
+코드는 위에서 아래로 실행
+
