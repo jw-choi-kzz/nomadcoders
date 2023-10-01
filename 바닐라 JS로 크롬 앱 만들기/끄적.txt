@@ -316,5 +316,30 @@ function deleteToDo(event) {
   li.remove();
 }
 
-#7.3 Saving To Dos
+#7.3 Saving To Dos & #7.4 Loading To Dos part One & #7.5 Loading To Dos part Two
 JSON.stringify = JS object나 array나 어떤 것이든 String으로 바꿔주는 기능
+JSON.parse("") = String을 array로 만드는 기능
+function 따로 만들지 않고 (argument)=> 실행문장 적어도 ok
+
+if (savedToDos !== null) { 
+  //null이 아니라면 array로 변경해서 parsedToDos에 저장하고
+  const parsedToDos = JSON.parse(savedToDos);
+  //forEach() = array 속 각 item에 대해 function을 실행
+  //처리되고 있는 item이 무엇인지 알아야 좋음
+  //function을 따로 만드는 대신 여기 안에서 function 이름 없이 짧게 쓰는 방법 : item에 대해 => 뒤의 내용을 실행하겠다
+  parsedToDos.forEach((item) => console.log("this is the turn of ", item));
+}
+
+#7.6 Deleting To Dos part One & #7.7 Deleting To Dos part Two
+toDos array와 local stage는 다르다
+toDos.push(newTodoObj);//push
+
+지우고 싶은 item을 제외한 새로운 array 
+어떤function (object인 dd) { return dd.id !== "찾는거" } //결과로 true, false 반환
+대상array.filter(function) 하면 = filter가 array의 각 item을 argument로 넘겨줌
+
+#8.0 Geolocation & #8.1 Weather API 
+.coords.latitude = 위도; longitude = 경도
+navigator.geolocation.getCurrentPosition(onGeoOk, onGeoError);
+
+.then()
