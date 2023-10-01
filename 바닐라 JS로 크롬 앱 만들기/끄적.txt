@@ -202,3 +202,56 @@ if(userName === ""){
     </form>
 </body>
 
+#4.2 Events & #4.3 Events part Two
+form submit하면 새로고침되는 기본동작..
+addEventListener를 통해 얻은 정보를 function의 argument로 가지고 (이름 event로 하는 것이 좋음) .preventDefault() = 어떤 event의 기본 행동을 막는 function
+
+function onLoginSubmit(event) {
+    event.preventDefault();
+    console.log(event);
+}
+
+loginForm.addEventListener("submit", onLoginSubmit);
+//브라우저는 우선 function을 호출하고, 브라우저 내의 event로부터 정보를 잡아내서 이 정보를 가지고 function 실행
+
+#4.4 Getting Username
+
+classList.add("hidden") 하고
+css 파일에서 
+.hidden {    display: none; }
+
+const HIDDEN_CLASSNAME = "hidden"; //string만 포함된 변수는 대문자로 표기
+
+greeting.innerText = `Hello ${username}`; //또는 "Hello "+username 
+//변수와 string을 결합한다면 ${변수명}으로 표현 & ` 이거 ` 안에 담을 것!
+  
+#4.5 Saving Username
+
+localStorage 이미 존재. 브라우저가 뭔가 저장할 수 있도록
+localStorage.setItem('이 이름으로','이 내용을') = 정보 저장
+localStorage.getItem('저장된 이름') , removeItem('저장된 이름')
+
+localStorage.setItem("username", username);//("이름",값)으로 storage의 item 저장
+
+#4.6 Loading Username 
+
+localStorage.getItem('없는 이름')이면 null 반환 => user 정보 유무 확인용으로 사용
+(흐름) localStorage에 user 정보 있으면 거기서 받아서 인자로 넣어줌. 없으면 form의 submit을 기다림. input으로부터 정보를 받고 작업.
+
+const USERNAME_KEY = "username";//자주 쓰니까 변수로 저장. 변수에서 오타가 나면 JS가 알려줄테니까
+//반복되는 작업은 그냥 따로 뺌
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);//없으면 null 뜨겠지
+
+if (savedUsername === null) { //그 이름이 저장되어 있지 않다면
+  //SHOW the form
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+    //SHOW the greetings
+  paintGreetings(savedUsername);
+}
+
+#4.7 Super Recap
+
+
