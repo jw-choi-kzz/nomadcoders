@@ -57,6 +57,38 @@ isNaN() : ()안의 것이 NaN가 맞는지 아닌지 boolean 값을 return하는
 == 값만 비교하는 연산자 ( 0 == false => true)
 === 유형도 비교 ( 0 === false => false)
 
+#3.0 The Document Object
+JavaScript에서 HTML을 읽고, 수정 가능
+document.title = "Hi" 하면 변경됨
+document.body
 
+#3.1 HTML in Javascript
+특정 무언가를 가져오는 것
+document.getElementById("title")
+autofocus
+
+//JS를 통해 HTML를 변경
+const title = document.getElementById("title"); //HTML에서 id가 같은 element 항목을 잡아와서
+title.innerText = "Got you"; //innertext를 Got you로 변경
+
+#3.2 Searching For Elements
+대부분의 경우에는 id보다는 class Name을 사용할거임
+<h1 class="hello">Grab me!</h1>
+
+const hellos = document.getElementsByClassName("hello");
+console.log(hellos);
+
+querySelector는 element를 CSS 방식으로 검색 가능
+const title = document.querySelector(".hello hi");
+첫번째 element만 가져옴
+이후의 element 가져오려면 ( :first child ) 같은 표현
+const title = document.querySelector("#hello:first-child");
+
+id 하위의 form을 가져오거나
+querySelectorAll은 Array로 반환됨
+
+#3.3 Events
+console.dir() : 그 안의 elements 확인
+여기서 on 들어가는 것들은 event
 
 
