@@ -52,4 +52,11 @@ parseInt() : integer 형으로 변환.(typeof = number)
 if 만약 () 안의 변수가 number가 아니라면 NaN (Not a Number) 출력됨
 isNaN() : ()안의 것이 NaN가 맞는지 아닌지 boolean 값을 return하는 함수
 
+#2.15 Conditionals part Three
+&& || 
+== 값만 비교하는 연산자 ( 0 == false => true)
+=== 유형도 비교 ( 0 === false => false)
+
+
+
 
