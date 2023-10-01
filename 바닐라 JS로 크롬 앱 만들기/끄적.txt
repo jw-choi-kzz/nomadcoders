@@ -128,3 +128,77 @@ Clipboard events - "copy" : Fired when the user initiates a copy action through 
 
 Connection events - "offline" : Fired when the browser has lost access to the network and the value of navigator.onLine has switched to false.
 - "online" : Fired when the browser has gained access to the network and the value of navigator.onLine has switched to true.
+
+#3.6 CSS in Javascript & #3.7 CSS in Javascript part Two & #3.8 CSS in Javascript part Three
+
+function handleTitleClick(){
+    const nowColor = h1.style.color;
+    let newColor = h1.style.color;
+    console.log("title was chlicked");
+    if (nowColor === "blue"){
+        newColor = "tomato";
+    } else {
+        newColor = "blue";
+    }
+    h1.style.color = newColor;
+}
+
+element를 찾고 -> event를 listen -> 그 event에 반응해라 
+
+transition: color 0.5s ease-in-out;
+
+classList = class들의 목록으로 작업할 수 있게끔 허용.
+classList.contains() = HTML element의 class에 포함되어 있는지 확인
+classList.remove(), add()
+
+toggle class name 체크하여 classList에 포함되어 있으면 제거, 없으면 추가
+h1.classList.toggle("clicked");
+
+#4.0 Input Values
+
+[[html]]
+<body>
+    <div id="login-form">
+        <input type="text" placeholder="What is your name?"/>
+        <button>Log In</button>
+        <script src='app.js'></script>
+    </div>
+</body>
+
+[[js]]
+const loginForm = document.getElementById("login-form");//loginForm은 HTML element로서
+const loginInput = loginForm.querySelector("input");//내부에서 바로 querySelector 검색 가능
+const loginButton = loginForm.querySelector("button");
+
+/*
+또는 
+const loginInput = document.querySelector("#login-form input");//내부에서 바로 querySelector 검색 가능
+const loginButton = document.querySelector("#login-form button");
+*/
+
+function onLoginBtnClick() {
+    //console.dir(loginInput.value); //내부 확인
+    console.log("hello",loginInput.value); //console에 찍기
+}
+
+loginButton.addEventListener("click", onLoginBtnClick)
+
+#4.1 Form Submission
+
+if(userName === ""){
+        alert("please write your name");
+    } else if (userName.length > 15){
+        alert("your name is too long");
+    } //값의 유효성을 확인하는 방법..이지만 html을 통한 기존 기능 활용
+}
+
+->
+
+<body>
+    <form id="login-form"><!--input의 유효성 검사를 작동시키기 위해서는 form이 필요-->
+        <input required maxlength="15" type="text" placeholder="What is your name?"/>
+        <input type="submit" value="Log In"/><!--form은 type="submit"인 input 또는 button을 통해 submit-->
+        <!--form안에서 enter 눌러도 (input이 더이상 존재하지 않는다면 자동으로) submit됨-->
+    </form>
+</body>
+
