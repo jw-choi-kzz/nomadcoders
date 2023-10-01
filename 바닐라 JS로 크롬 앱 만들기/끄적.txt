@@ -155,7 +155,6 @@ toggle class name 체크하여 classList에 포함되어 있으면 제거, 없�
 h1.classList.toggle("clicked");
 
 #4.0 Input Values
-
 [[html]]
 <body>
     <div id="login-form">
@@ -184,7 +183,6 @@ function onLoginBtnClick() {
 loginButton.addEventListener("click", onLoginBtnClick)
 
 #4.1 Form Submission
-
 if(userName === ""){
         alert("please write your name");
     } else if (userName.length > 15){
@@ -215,7 +213,6 @@ loginForm.addEventListener("submit", onLoginSubmit);
 //브라우저는 우선 function을 호출하고, 브라우저 내의 event로부터 정보를 잡아내서 이 정보를 가지고 function 실행
 
 #4.4 Getting Username
-
 classList.add("hidden") 하고
 css 파일에서 
 .hidden {    display: none; }
@@ -226,7 +223,6 @@ greeting.innerText = `Hello ${username}`; //또는 "Hello "+username
 //변수와 string을 결합한다면 ${변수명}으로 표현 & ` 이거 ` 안에 담을 것!
   
 #4.5 Saving Username
-
 localStorage 이미 존재. 브라우저가 뭔가 저장할 수 있도록
 localStorage.setItem('이 이름으로','이 내용을') = 정보 저장
 localStorage.getItem('저장된 이름') , removeItem('저장된 이름')
@@ -234,7 +230,6 @@ localStorage.getItem('저장된 이름') , removeItem('저장된 이름')
 localStorage.setItem("username", username);//("이름",값)으로 storage의 item 저장
 
 #4.6 Loading Username 
-
 localStorage.getItem('없는 이름')이면 null 반환 => user 정보 유무 확인용으로 사용
 (흐름) localStorage에 user 정보 있으면 거기서 받아서 인자로 넣어줌. 없으면 form의 submit을 기다림. input으로부터 정보를 받고 작업.
 
@@ -252,6 +247,74 @@ if (savedUsername === null) { //그 이름이 저장되어 있지 않다면
   paintGreetings(savedUsername);
 }
 
-#4.7 Super Recap
+#5.0 Intervals & #5.1 Timeouts and Dates
+intervals : 매번 일어나야 하는 것 
+setInterval(sayHello, 5000);//2개 인자( function 이름, ms) 어떤 function을 몇 ms마다 실행할지
 
+Timeout : 일정 시간이 흐르고 실행할지 설정
 
+Date 라는 object = get뭐뭐뭐
+
+function getClock() {
+  const date = new Date();
+  clock.innerText = `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  //clock안의 text를 Date() object를 활용하여 getHours(), getMinutes(), getSeconds()를 가져온다
+}
+
+getClock();
+setInterval(getClock, 1000); //interval : 1초마다(1000ms)
+
+#5.2 PadStart
+padStart() = string에 쓸 수 있는 function. 인자 2개(이 길이가 아니라면, 앞에 "이걸" 추가한다)
+
+const hours = String(date.getHours()).padStart(2, "0"); //String(date.getHours())로 getHours값을 String 형으로 바꾸고, padStart 설정한 값을 hours에 저장함
+
+#6.0 Quotes & #6.1 Background
+randomness 관련 부분
+
+const todaysQuote = quotes[Math.floor(Math.random() * quotes.length)];
+round는 반올림. ceil은 올림. floor는 버림
+Math.random()으로 생성한 수 * 인용 Array의 길이를 곱하여 나온 수를 floor(소수점 이하 버림)
+
+document.createElement() = JS에서 HTML element를 생성함
+.src = `사진 경로`
+.appendChild() = body부분 html을 추가
+
+const bgImage = document.createElement("img"); 
+bgImage.src = `img/${chosenImage}`;
+document.body.appendChild(bgImage); //body에 추가
+
+#7.0 Setup
+<ul id="todo-list"></ul><!--js에서 li 추가할거임. html에서는 비워둔 상태-->
+
+function handleToDoSubmit(event){
+    event.preventDefault();
+    const newTodo = toDoInput.value;//현재 input 받은 값을 따로 저장
+    toDoInput.value = "";//그 자리는 비운다
+}
+
+#7.1 Adding ToDos 
+function handleToDoSubmit(event) 안에서 paintToDo(newTodo);//새로 받은 input값을 paintToDo로 보낸다
+
+function paintToDo(newTodo) {
+  const li = document.createElement("li");//li element를 새로 만든다
+  const span = document.createElement("span");//span element를 새로 만든다
+  li.appendChild(span);//li의 안에 span을 붙인다
+  span.innerText = newTodo;//span 안의 내용을 newToDo로 바꾼다
+  toDoList.appendChild(li);//새로 위에 만들어 둔 li를 toDoList에 붙인다
+}
+//toDoList 안에 새로운 li 안에 새로운 Span있고 그 안의 내용을 newToDo로 변경
+
+#7.2 Deleting To Dos
+toDoList 안에 
+새로 만든<document.createElement()> li. 
+그 안에 <.appendChild()> 새로 만든 span(innerText = newTodo)과 button(innerText = "❌").
+
+button.addEventListener("click", deleteToDo);
+function deleteToDo(event) {
+  const li = event.target.parentElement; //"click" event가 발생한 target의 parent element를 찾아서 remove
+  li.remove();
+}
+
+#7.3 Saving To Dos
+JSON.stringify = JS object나 array나 어떤 것이든 String으로 바꿔주는 기능
