@@ -87,8 +87,44 @@ const title = document.querySelector("#hello:first-child");
 id 하위의 form을 가져오거나
 querySelectorAll은 Array로 반환됨
 
-#3.3 Events
+#3.3 Events & #3.4 Events part Two
 console.dir() : 그 안의 elements 확인
 여기서 on 들어가는 것들은 event
+style 안에서 element의 style properties를 JavaScript 형식으로 볼 수 있음
 
+title.style.color = "blue";
 
+listening event : addEventListener를 통해 (내가 가져온 HTML element에 대한 "event"가 실행되면, 함수를 호출하겠다) //함수 이름만 넣지 () 괄호 넣지 않아야 함!!
+event ex. click mouseenter mouseleave 
+
+function handleTitleClick(){
+    console.log("title was chlicked");
+    title.style.color = "blue";
+}
+title.addEventListener("click",handleTitleClick);
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLHeadingElement
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
+https://developer.mozilla.org/en-US/docs/Web/API/Element
+
+oneventname property : copy, cut, paste, invalid, animation events, input events, pointer events, transition events ...
+
+#3.5 More Events 
+window interface
+https://developer.mozilla.org/en-US/docs/Web/API/Window
+
+event를 확인하는 방법은 
+[1] title.addEventListener("click",handleTitleClick); <더 선호. removeEventListener 같은 걸 할 숭 ㅣㅆ음>
+[2] title.onclick = handleTitleClick;
+
+"resize" = Fired when the window has been resized.
+
+function handleWindowResize(){
+    document.body.style.backgroundColor = "tomato";
+}
+window.addEventListener("resize", handleWindowResize);
+
+Clipboard events - "copy" : Fired when the user initiates a copy action through the browser's user interface. Also available via the oncopy property.
+
+Connection events - "offline" : Fired when the browser has lost access to the network and the value of navigator.onLine has switched to false.
+- "online" : Fired when the browser has gained access to the network and the value of navigator.onLine has switched to true.
